@@ -1,0 +1,1663 @@
+#pragma once
+
+// name: mahmoud ali mahmoud ali khalaf 
+// sec: 1 
+// id: 18210
+// the explanation of each button function and how program done in a user manual panel and in documentation file.
+// the explanation of the code will be as a comments with each code.
+
+
+#include "MyForm.h"
+#include <opencv2/opencv.hpp>
+#include <msclr/marshal.h>
+#include "msclr\marshal_cppstd.h"
+#include <iostream>
+#include <array>
+using namespace msclr::interop;
+using namespace cv;
+using namespace std;
+
+
+namespace toolgui {
+	Mat source , background;
+	const char* source_image;
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// Summary for MyForm
+	/// </summary>
+	public ref class MyForm : public System::Windows::Forms::Form
+	{
+	public:
+		MyForm(void)
+		{
+			InitializeComponent();
+
+			panel1->Hide();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		~MyForm()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ read;
+	protected:
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ flipp_x;
+	private: System::Windows::Forms::Button^ hist;
+	private: System::Windows::Forms::Button^ logb;
+	private: System::Windows::Forms::Button^ reset;
+	private: System::Windows::Forms::Button^ zoom;
+	private: System::Windows::Forms::Button^ skewingLR;
+	private: System::Windows::Forms::Button^ translation;
+	private: System::Windows::Forms::Button^ rotation;
+	private: System::Windows::Forms::Button^ negative;
+	private: System::Windows::Forms::Button^ Graylevelscing;
+	private: System::Windows::Forms::Button^ save;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::Windows::Forms::TextBox^ textBox7;
+	private: System::Windows::Forms::TextBox^ textBox8;
+	private: System::Windows::Forms::TextBox^ textBox9;
+	private: System::Windows::Forms::TextBox^ textBox10;
+	private: System::Windows::Forms::Button^ blinding;
+	private: System::Windows::Forms::Button^ back;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Button^ smoothing;
+	private: System::Windows::Forms::Button^ orderfilter;
+	private: System::Windows::Forms::Button^ sobil_x;
+	private: System::Windows::Forms::Button^ decrsbright;
+	private: System::Windows::Forms::Button^ incrsbright;
+	private: System::Windows::Forms::Button^ bwbitplane;
+	private: System::Windows::Forms::Button^ Thresholding;
+	private: System::Windows::Forms::Button^ Restart;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ Thresholding_Segmentation;
+	private: System::Windows::Forms::TextBox^ textBox11;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ zoom2;
+	private: System::Windows::Forms::TextBox^ textBox13;
+	private: System::Windows::Forms::TextBox^ textBox14;
+	private: System::Windows::Forms::Button^ traditional;
+	private: System::Windows::Forms::Button^ circular;
+	private: System::Windows::Forms::Button^ cone;
+	private: System::Windows::Forms::Button^ sobil_y;
+	private: System::Windows::Forms::Button^ Edge_based_method;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Button^ flipp_x_y;
+	private: System::Windows::Forms::Button^ flipp_y;
+	private: System::Windows::Forms::OpenFileDialog^ ofd;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+	private: System::Windows::Forms::TextBox^ textBox15;
+	private: System::Windows::Forms::Button^ SkewingTD;
+	private: System::Windows::Forms::TextBox^ textBox12;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Panel^ panel1;
+
+	private:
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->read = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->flipp_x = (gcnew System::Windows::Forms::Button());
+			this->hist = (gcnew System::Windows::Forms::Button());
+			this->logb = (gcnew System::Windows::Forms::Button());
+			this->reset = (gcnew System::Windows::Forms::Button());
+			this->zoom = (gcnew System::Windows::Forms::Button());
+			this->skewingLR = (gcnew System::Windows::Forms::Button());
+			this->translation = (gcnew System::Windows::Forms::Button());
+			this->rotation = (gcnew System::Windows::Forms::Button());
+			this->negative = (gcnew System::Windows::Forms::Button());
+			this->Graylevelscing = (gcnew System::Windows::Forms::Button());
+			this->save = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->blinding = (gcnew System::Windows::Forms::Button());
+			this->back = (gcnew System::Windows::Forms::Button());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->smoothing = (gcnew System::Windows::Forms::Button());
+			this->orderfilter = (gcnew System::Windows::Forms::Button());
+			this->sobil_x = (gcnew System::Windows::Forms::Button());
+			this->decrsbright = (gcnew System::Windows::Forms::Button());
+			this->incrsbright = (gcnew System::Windows::Forms::Button());
+			this->bwbitplane = (gcnew System::Windows::Forms::Button());
+			this->Thresholding = (gcnew System::Windows::Forms::Button());
+			this->Restart = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->Thresholding_Segmentation = (gcnew System::Windows::Forms::Button());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->zoom2 = (gcnew System::Windows::Forms::Button());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
+			this->traditional = (gcnew System::Windows::Forms::Button());
+			this->circular = (gcnew System::Windows::Forms::Button());
+			this->cone = (gcnew System::Windows::Forms::Button());
+			this->sobil_y = (gcnew System::Windows::Forms::Button());
+			this->Edge_based_method = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->flipp_x_y = (gcnew System::Windows::Forms::Button());
+			this->flipp_y = (gcnew System::Windows::Forms::Button());
+			this->ofd = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
+			this->SkewingTD = (gcnew System::Windows::Forms::Button());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->panel1->SuspendLayout();
+			this->SuspendLayout();
+			// 
+			// read
+			// 
+			this->read->BackColor = System::Drawing::Color::CornflowerBlue;
+			this->read->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->read->Font = (gcnew System::Drawing::Font(L"Times New Roman", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->read->Location = System::Drawing::Point(1081, 68);
+			this->read->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->read->Name = L"read";
+			this->read->Size = System::Drawing::Size(171, 70);
+			this->read->TabIndex = 0;
+			this->read->Text = L"Open";
+			this->read->UseVisualStyleBackColor = false;
+			this->read->Click += gcnew System::EventHandler(this, &MyForm::read_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(837, 142);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(415, 432);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 1;
+			this->pictureBox1->TabStop = false;
+			// 
+			// flipp_x
+			// 
+			this->flipp_x->BackColor = System::Drawing::Color::YellowGreen;
+			this->flipp_x->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->flipp_x->Location = System::Drawing::Point(568, 58);
+			this->flipp_x->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->flipp_x->Name = L"flipp_x";
+			this->flipp_x->Size = System::Drawing::Size(83, 64);
+			this->flipp_x->TabIndex = 3;
+			this->flipp_x->Text = L"Flip x";
+			this->flipp_x->UseVisualStyleBackColor = false;
+			this->flipp_x->Click += gcnew System::EventHandler(this, &MyForm::flipp_x_Click);
+			// 
+			// hist
+			// 
+			this->hist->BackColor = System::Drawing::Color::BurlyWood;
+			this->hist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->hist->Location = System::Drawing::Point(12, 126);
+			this->hist->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->hist->Name = L"hist";
+			this->hist->Size = System::Drawing::Size(252, 50);
+			this->hist->TabIndex = 4;
+			this->hist->Text = L"Histogram";
+			this->hist->UseVisualStyleBackColor = false;
+			this->hist->Click += gcnew System::EventHandler(this, &MyForm::hist_Click);
+			// 
+			// logb
+			// 
+			this->logb->BackColor = System::Drawing::Color::BurlyWood;
+			this->logb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->logb->Location = System::Drawing::Point(12, 368);
+			this->logb->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->logb->Name = L"logb";
+			this->logb->Size = System::Drawing::Size(252, 55);
+			this->logb->TabIndex = 7;
+			this->logb->Text = L"Log Transformation";
+			this->logb->UseVisualStyleBackColor = false;
+			this->logb->Click += gcnew System::EventHandler(this, &MyForm::logb_Click);
+			// 
+			// reset
+			// 
+			this->reset->BackColor = System::Drawing::Color::OrangeRed;
+			this->reset->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->reset->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->reset->Location = System::Drawing::Point(837, 68);
+			this->reset->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->reset->Name = L"reset";
+			this->reset->Size = System::Drawing::Size(115, 42);
+			this->reset->TabIndex = 10;
+			this->reset->Text = L"Reset";
+			this->reset->UseVisualStyleBackColor = false;
+			this->reset->Click += gcnew System::EventHandler(this, &MyForm::reset_Click);
+			// 
+			// zoom
+			// 
+			this->zoom->BackColor = System::Drawing::Color::YellowGreen;
+			this->zoom->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->zoom->Location = System::Drawing::Point(568, 303);
+			this->zoom->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->zoom->Name = L"zoom";
+			this->zoom->Size = System::Drawing::Size(248, 60);
+			this->zoom->TabIndex = 12;
+			this->zoom->Text = L"crop / Zoom";
+			this->zoom->UseVisualStyleBackColor = false;
+			this->zoom->Click += gcnew System::EventHandler(this, &MyForm::zoom_Click);
+			// 
+			// skewingLR
+			// 
+			this->skewingLR->BackColor = System::Drawing::Color::YellowGreen;
+			this->skewingLR->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->skewingLR->Location = System::Drawing::Point(568, 178);
+			this->skewingLR->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->skewingLR->Name = L"skewingLR";
+			this->skewingLR->Size = System::Drawing::Size(116, 50);
+			this->skewingLR->TabIndex = 13;
+			this->skewingLR->Text = L"SkewingLR";
+			this->skewingLR->UseVisualStyleBackColor = false;
+			this->skewingLR->Click += gcnew System::EventHandler(this, &MyForm::skewingLR_Click);
+			// 
+			// translation
+			// 
+			this->translation->BackColor = System::Drawing::Color::YellowGreen;
+			this->translation->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->translation->Location = System::Drawing::Point(568, 257);
+			this->translation->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->translation->Name = L"translation";
+			this->translation->Size = System::Drawing::Size(169, 46);
+			this->translation->TabIndex = 14;
+			this->translation->Text = L"Translation";
+			this->translation->UseVisualStyleBackColor = false;
+			this->translation->Click += gcnew System::EventHandler(this, &MyForm::translation_Click);
+			// 
+			// rotation
+			// 
+			this->rotation->BackColor = System::Drawing::Color::YellowGreen;
+			this->rotation->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->rotation->Location = System::Drawing::Point(568, 126);
+			this->rotation->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->rotation->Name = L"rotation";
+			this->rotation->Size = System::Drawing::Size(148, 50);
+			this->rotation->TabIndex = 18;
+			this->rotation->Text = L"Rotation";
+			this->rotation->UseVisualStyleBackColor = false;
+			this->rotation->Click += gcnew System::EventHandler(this, &MyForm::rotation_Click);
+			// 
+			// negative
+			// 
+			this->negative->BackColor = System::Drawing::Color::BurlyWood;
+			this->negative->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->negative->Location = System::Drawing::Point(12, 178);
+			this->negative->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->negative->Name = L"negative";
+			this->negative->Size = System::Drawing::Size(252, 50);
+			this->negative->TabIndex = 19;
+			this->negative->Text = L"Negative";
+			this->negative->UseVisualStyleBackColor = false;
+			this->negative->Click += gcnew System::EventHandler(this, &MyForm::negative_Click);
+			// 
+			// Graylevelscing
+			// 
+			this->Graylevelscing->BackColor = System::Drawing::Color::BurlyWood;
+			this->Graylevelscing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Graylevelscing->Location = System::Drawing::Point(12, 519);
+			this->Graylevelscing->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Graylevelscing->Name = L"Graylevelscing";
+			this->Graylevelscing->Size = System::Drawing::Size(175, 54);
+			this->Graylevelscing->TabIndex = 20;
+			this->Graylevelscing->Text = L"Gray level slicing";
+			this->Graylevelscing->UseVisualStyleBackColor = false;
+			this->Graylevelscing->Click += gcnew System::EventHandler(this, &MyForm::Graylevelscing_Click);
+			// 
+			// save
+			// 
+			this->save->BackColor = System::Drawing::Color::Lime;
+			this->save->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->save->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->save->Location = System::Drawing::Point(959, 68);
+			this->save->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->save->Name = L"save";
+			this->save->Size = System::Drawing::Size(117, 42);
+			this->save->TabIndex = 22;
+			this->save->Text = L"Save ";
+			this->save->UseVisualStyleBackColor = false;
+			this->save->Click += gcnew System::EventHandler(this, &MyForm::save_Click);
+			// 
+			// label3
+			// 
+			this->label3->Location = System::Drawing::Point(0, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(100, 23);
+			this->label3->TabIndex = 0;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(881, 31);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(0, 17);
+			this->label5->TabIndex = 26;
+			this->label5->UseMnemonic = false;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(1063, 36);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(12, 17);
+			this->label7->TabIndex = 28;
+			this->label7->Text = L".";
+			// 
+			// label8
+			// 
+			this->label8->BackColor = System::Drawing::Color::DeepSkyBlue;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label8->Location = System::Drawing::Point(567, 14);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(249, 41);
+			this->label8->TabIndex = 29;
+			this->label8->Text = L"Image Operations";
+			// 
+			// label9
+			// 
+			this->label9->BackColor = System::Drawing::Color::PowderBlue;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(15, 58);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(263, 64);
+			this->label9->TabIndex = 30;
+			this->label9->Text = L"\r\nPoint Processing ";
+			// 
+			// label10
+			// 
+			this->label10->BackColor = System::Drawing::Color::Linen;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label10->Location = System::Drawing::Point(1041, 11);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(224, 25);
+			this->label10->TabIndex = 32;
+			this->label10->Text = L"Avarage    NO. Colm    NO. Rows";
+			this->label10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(1128, 36);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(12, 17);
+			this->label11->TabIndex = 33;
+			this->label11->Text = L".";
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(1203, 36);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(12, 17);
+			this->label12->TabIndex = 34;
+			this->label12->Text = L".";
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(721, 127);
+			this->textBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(93, 22);
+			this->textBox3->TabIndex = 35;
+			this->textBox3->Text = L"angel ";
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(721, 151);
+			this->textBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(93, 22);
+			this->textBox4->TabIndex = 36;
+			this->textBox4->Text = L"scale factor";
+			// 
+			// textBox5
+			// 
+			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox5->Location = System::Drawing::Point(631, 230);
+			this->textBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(52, 20);
+			this->textBox5->TabIndex = 37;
+			this->textBox5->Text = L"Top";
+			// 
+			// textBox6
+			// 
+			this->textBox6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox6->Location = System::Drawing::Point(568, 230);
+			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox6->Name = L"textBox6";
+			this->textBox6->Size = System::Drawing::Size(56, 20);
+			this->textBox6->TabIndex = 38;
+			this->textBox6->Text = L"Bottom ";
+			// 
+			// textBox7
+			// 
+			this->textBox7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox7->Location = System::Drawing::Point(740, 258);
+			this->textBox7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox7->Name = L"textBox7";
+			this->textBox7->Size = System::Drawing::Size(75, 20);
+			this->textBox7->TabIndex = 39;
+			this->textBox7->Text = L"move in x";
+			// 
+			// textBox8
+			// 
+			this->textBox8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox8->Location = System::Drawing::Point(740, 282);
+			this->textBox8->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox8->Name = L"textBox8";
+			this->textBox8->Size = System::Drawing::Size(75, 20);
+			this->textBox8->TabIndex = 40;
+			this->textBox8->Text = L"move in y";
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(727, 368);
+			this->textBox9->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(88, 22);
+			this->textBox9->TabIndex = 41;
+			this->textBox9->Text = L"x start point";
+			// 
+			// textBox10
+			// 
+			this->textBox10->Location = System::Drawing::Point(728, 394);
+			this->textBox10->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(87, 22);
+			this->textBox10->TabIndex = 42;
+			this->textBox10->Text = L"y start point";
+			// 
+			// blinding
+			// 
+			this->blinding->BackColor = System::Drawing::Color::BurlyWood;
+			this->blinding->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->blinding->Location = System::Drawing::Point(133, 230);
+			this->blinding->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->blinding->Name = L"blinding";
+			this->blinding->Size = System::Drawing::Size(131, 73);
+			this->blinding->TabIndex = 43;
+			this->blinding->Text = L"Blinding";
+			this->blinding->UseVisualStyleBackColor = false;
+			this->blinding->Click += gcnew System::EventHandler(this, &MyForm::blinding_Click);
+			// 
+			// back
+			// 
+			this->back->BackColor = System::Drawing::Color::BurlyWood;
+			this->back->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->back->Location = System::Drawing::Point(12, 230);
+			this->back->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->back->Name = L"back";
+			this->back->Size = System::Drawing::Size(117, 73);
+			this->back->TabIndex = 44;
+			this->back->Text = L"select background image";
+			this->back->UseVisualStyleBackColor = false;
+			this->back->Click += gcnew System::EventHandler(this, &MyForm::back_Click);
+			// 
+			// label13
+			// 
+			this->label13->BackColor = System::Drawing::Color::DeepSkyBlue;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(15, 14);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(548, 41);
+			this->label13->TabIndex = 47;
+			this->label13->Text = L"Image Enhancement ";
+			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label14
+			// 
+			this->label14->BackColor = System::Drawing::Color::PowderBlue;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label14->Location = System::Drawing::Point(268, 58);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(295, 64);
+			this->label14->TabIndex = 48;
+			this->label14->Text = L"Neighborhood \r\noperations processing";
+			this->label14->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// smoothing
+			// 
+			this->smoothing->BackColor = System::Drawing::Color::CadetBlue;
+			this->smoothing->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->smoothing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->smoothing->Location = System::Drawing::Point(269, 126);
+			this->smoothing->Margin = System::Windows::Forms::Padding(4);
+			this->smoothing->Name = L"smoothing";
+			this->smoothing->Size = System::Drawing::Size(291, 50);
+			this->smoothing->TabIndex = 49;
+			this->smoothing->Text = L"smoothing filter ";
+			this->smoothing->UseVisualStyleBackColor = false;
+			this->smoothing->Click += gcnew System::EventHandler(this, &MyForm::smoothing_Click);
+			// 
+			// orderfilter
+			// 
+			this->orderfilter->BackColor = System::Drawing::Color::CadetBlue;
+			this->orderfilter->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->orderfilter->Location = System::Drawing::Point(269, 230);
+			this->orderfilter->Margin = System::Windows::Forms::Padding(4);
+			this->orderfilter->Name = L"orderfilter";
+			this->orderfilter->Size = System::Drawing::Size(181, 73);
+			this->orderfilter->TabIndex = 50;
+			this->orderfilter->Text = L"order statistical filter";
+			this->orderfilter->UseVisualStyleBackColor = false;
+			this->orderfilter->Click += gcnew System::EventHandler(this, &MyForm::orderfilter_Click);
+			// 
+			// sobil_x
+			// 
+			this->sobil_x->BackColor = System::Drawing::Color::CadetBlue;
+			this->sobil_x->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->sobil_x->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->sobil_x->Location = System::Drawing::Point(269, 303);
+			this->sobil_x->Margin = System::Windows::Forms::Padding(4);
+			this->sobil_x->Name = L"sobil_x";
+			this->sobil_x->Size = System::Drawing::Size(291, 60);
+			this->sobil_x->TabIndex = 51;
+			this->sobil_x->Text = L"Sharpening in x direction";
+			this->sobil_x->UseVisualStyleBackColor = false;
+			this->sobil_x->Click += gcnew System::EventHandler(this, &MyForm::sobil_x_Click);
+			// 
+			// decrsbright
+			// 
+			this->decrsbright->BackColor = System::Drawing::Color::BurlyWood;
+			this->decrsbright->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->decrsbright->Location = System::Drawing::Point(133, 303);
+			this->decrsbright->Margin = System::Windows::Forms::Padding(4);
+			this->decrsbright->Name = L"decrsbright";
+			this->decrsbright->Size = System::Drawing::Size(131, 60);
+			this->decrsbright->TabIndex = 52;
+			this->decrsbright->Text = L"Decrease Brightness\r\n";
+			this->decrsbright->UseVisualStyleBackColor = false;
+			this->decrsbright->Click += gcnew System::EventHandler(this, &MyForm::decrsbright_Click);
+			// 
+			// incrsbright
+			// 
+			this->incrsbright->BackColor = System::Drawing::Color::BurlyWood;
+			this->incrsbright->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->incrsbright->Location = System::Drawing::Point(12, 303);
+			this->incrsbright->Margin = System::Windows::Forms::Padding(4);
+			this->incrsbright->Name = L"incrsbright";
+			this->incrsbright->Size = System::Drawing::Size(117, 60);
+			this->incrsbright->TabIndex = 53;
+			this->incrsbright->Text = L"Increase Brightness";
+			this->incrsbright->UseVisualStyleBackColor = false;
+			this->incrsbright->Click += gcnew System::EventHandler(this, &MyForm::incrsbright_Click);
+			// 
+			// bwbitplane
+			// 
+			this->bwbitplane->BackColor = System::Drawing::Color::BurlyWood;
+			this->bwbitplane->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bwbitplane->Location = System::Drawing::Point(13, 427);
+			this->bwbitplane->Margin = System::Windows::Forms::Padding(4);
+			this->bwbitplane->Name = L"bwbitplane";
+			this->bwbitplane->Size = System::Drawing::Size(160, 37);
+			this->bwbitplane->TabIndex = 54;
+			this->bwbitplane->Text = L"B/W bit plane ";
+			this->bwbitplane->UseVisualStyleBackColor = false;
+			this->bwbitplane->Click += gcnew System::EventHandler(this, &MyForm::bwbitplane_Click);
+			// 
+			// Thresholding
+			// 
+			this->Thresholding->BackColor = System::Drawing::Color::BurlyWood;
+			this->Thresholding->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Thresholding->Location = System::Drawing::Point(13, 466);
+			this->Thresholding->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Thresholding->Name = L"Thresholding";
+			this->Thresholding->Size = System::Drawing::Size(251, 48);
+			this->Thresholding->TabIndex = 56;
+			this->Thresholding->Text = L"B/W Thresholding";
+			this->Thresholding->UseVisualStyleBackColor = false;
+			this->Thresholding->Click += gcnew System::EventHandler(this, &MyForm::Thresholding_Click);
+			// 
+			// Restart
+			// 
+			this->Restart->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Restart->Location = System::Drawing::Point(968, 11);
+			this->Restart->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Restart->Name = L"Restart";
+			this->Restart->Size = System::Drawing::Size(68, 28);
+			this->Restart->TabIndex = 61;
+			this->Restart->Text = L"Restart";
+			this->Restart->UseVisualStyleBackColor = true;
+			this->Restart->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
+			// 
+			// label2
+			// 
+			this->label2->BackColor = System::Drawing::Color::DeepSkyBlue;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(273, 427);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(543, 37);
+			this->label2->TabIndex = 62;
+			this->label2->Text = L"Image Segmentation";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// Thresholding_Segmentation
+			// 
+			this->Thresholding_Segmentation->BackColor = System::Drawing::Color::Chocolate;
+			this->Thresholding_Segmentation->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Thresholding_Segmentation->Location = System::Drawing::Point(273, 466);
+			this->Thresholding_Segmentation->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Thresholding_Segmentation->Name = L"Thresholding_Segmentation";
+			this->Thresholding_Segmentation->Size = System::Drawing::Size(276, 48);
+			this->Thresholding_Segmentation->TabIndex = 63;
+			this->Thresholding_Segmentation->Text = L"Thresholding method";
+			this->Thresholding_Segmentation->UseVisualStyleBackColor = false;
+			this->Thresholding_Segmentation->Click += gcnew System::EventHandler(this, &MyForm::Thresholding_Segmentation_Click);
+			// 
+			// textBox11
+			// 
+			this->textBox11->Location = System::Drawing::Point(837, 113);
+			this->textBox11->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->Size = System::Drawing::Size(237, 22);
+			this->textBox11->TabIndex = 64;
+			this->textBox11->Text = L"enter saved image name or path .jpg";
+			// 
+			// label1
+			// 
+			this->label1->BackColor = System::Drawing::Color::Honeydew;
+			this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->label1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Oswald", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->Location = System::Drawing::Point(821, 14);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(141, 41);
+			this->label1->TabIndex = 66;
+			this->label1->Text = L"User Manual\?";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click_1);
+			// 
+			// zoom2
+			// 
+			this->zoom2->BackColor = System::Drawing::Color::YellowGreen;
+			this->zoom2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->zoom2->Location = System::Drawing::Point(568, 368);
+			this->zoom2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->zoom2->Name = L"zoom2";
+			this->zoom2->Size = System::Drawing::Size(155, 55);
+			this->zoom2->TabIndex = 68;
+			this->zoom2->Text = L"Zoom in";
+			this->zoom2->UseVisualStyleBackColor = false;
+			this->zoom2->Click += gcnew System::EventHandler(this, &MyForm::zoom2_Click);
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(192, 519);
+			this->textBox13->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(71, 22);
+			this->textBox13->TabIndex = 70;
+			this->textBox13->Text = L"range start";
+			// 
+			// textBox14
+			// 
+			this->textBox14->Location = System::Drawing::Point(192, 548);
+			this->textBox14->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox14->Name = L"textBox14";
+			this->textBox14->Size = System::Drawing::Size(71, 22);
+			this->textBox14->TabIndex = 71;
+			this->textBox14->Text = L"range end";
+			// 
+			// traditional
+			// 
+			this->traditional->BackColor = System::Drawing::Color::CadetBlue;
+			this->traditional->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->traditional->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->traditional->Location = System::Drawing::Point(269, 178);
+			this->traditional->Margin = System::Windows::Forms::Padding(4);
+			this->traditional->Name = L"traditional";
+			this->traditional->Size = System::Drawing::Size(127, 50);
+			this->traditional->TabIndex = 72;
+			this->traditional->Text = L"traditional";
+			this->traditional->UseVisualStyleBackColor = false;
+			this->traditional->Click += gcnew System::EventHandler(this, &MyForm::traditional_Click);
+			// 
+			// circular
+			// 
+			this->circular->BackColor = System::Drawing::Color::CadetBlue;
+			this->circular->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->circular->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->circular->Location = System::Drawing::Point(392, 178);
+			this->circular->Margin = System::Windows::Forms::Padding(4);
+			this->circular->Name = L"circular";
+			this->circular->Size = System::Drawing::Size(96, 50);
+			this->circular->TabIndex = 73;
+			this->circular->Text = L"circular";
+			this->circular->UseVisualStyleBackColor = false;
+			this->circular->Click += gcnew System::EventHandler(this, &MyForm::circular_Click);
+			// 
+			// cone
+			// 
+			this->cone->BackColor = System::Drawing::Color::CadetBlue;
+			this->cone->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->cone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->cone->Location = System::Drawing::Point(483, 178);
+			this->cone->Margin = System::Windows::Forms::Padding(4);
+			this->cone->Name = L"cone";
+			this->cone->Size = System::Drawing::Size(77, 50);
+			this->cone->TabIndex = 74;
+			this->cone->Text = L"cone";
+			this->cone->UseVisualStyleBackColor = false;
+			this->cone->Click += gcnew System::EventHandler(this, &MyForm::cone_Click);
+			// 
+			// sobil_y
+			// 
+			this->sobil_y->BackColor = System::Drawing::Color::CadetBlue;
+			this->sobil_y->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->sobil_y->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->sobil_y->Location = System::Drawing::Point(269, 368);
+			this->sobil_y->Margin = System::Windows::Forms::Padding(4);
+			this->sobil_y->Name = L"sobil_y";
+			this->sobil_y->Size = System::Drawing::Size(291, 57);
+			this->sobil_y->TabIndex = 75;
+			this->sobil_y->Text = L"Sharpening in y direction";
+			this->sobil_y->UseVisualStyleBackColor = false;
+			this->sobil_y->Click += gcnew System::EventHandler(this, &MyForm::sobil_y_Click);
+			// 
+			// Edge_based_method
+			// 
+			this->Edge_based_method->BackColor = System::Drawing::Color::Chocolate;
+			this->Edge_based_method->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->Edge_based_method->Location = System::Drawing::Point(555, 466);
+			this->Edge_based_method->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Edge_based_method->Name = L"Edge_based_method";
+			this->Edge_based_method->Size = System::Drawing::Size(263, 48);
+			this->Edge_based_method->TabIndex = 77;
+			this->Edge_based_method->Text = L"Edge based method";
+			this->Edge_based_method->UseVisualStyleBackColor = false;
+			this->Edge_based_method->Click += gcnew System::EventHandler(this, &MyForm::Edge_based_method_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
+				L"Plane 0", L"Plane 1", L"Plane 2", L"Plane 3",
+					L"Plane 4", L"Plane 5", L"Plane 6", L"Plane 7"
+			});
+			this->comboBox1->Location = System::Drawing::Point(175, 431);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(88, 24);
+			this->comboBox1->TabIndex = 81;
+			this->comboBox1->Text = L"plane no.";
+			// 
+			// flipp_x_y
+			// 
+			this->flipp_x_y->BackColor = System::Drawing::Color::YellowGreen;
+			this->flipp_x_y->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->flipp_x_y->Location = System::Drawing::Point(721, 58);
+			this->flipp_x_y->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->flipp_x_y->Name = L"flipp_x_y";
+			this->flipp_x_y->Size = System::Drawing::Size(95, 64);
+			this->flipp_x_y->TabIndex = 82;
+			this->flipp_x_y->Text = L"Flip x/y";
+			this->flipp_x_y->UseVisualStyleBackColor = false;
+			this->flipp_x_y->Click += gcnew System::EventHandler(this, &MyForm::flipp_x_y_Click);
+			// 
+			// flipp_y
+			// 
+			this->flipp_y->BackColor = System::Drawing::Color::YellowGreen;
+			this->flipp_y->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->flipp_y->Location = System::Drawing::Point(649, 58);
+			this->flipp_y->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->flipp_y->Name = L"flipp_y";
+			this->flipp_y->Size = System::Drawing::Size(75, 64);
+			this->flipp_y->TabIndex = 83;
+			this->flipp_y->Text = L"Flip y";
+			this->flipp_y->UseVisualStyleBackColor = false;
+			this->flipp_y->Click += gcnew System::EventHandler(this, &MyForm::flipp_y_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(691, 230);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(57, 20);
+			this->textBox1->TabIndex = 85;
+			this->textBox1->Text = L"to down";
+			// 
+			// textBox2
+			// 
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox2->Location = System::Drawing::Point(756, 230);
+			this->textBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(59, 20);
+			this->textBox2->TabIndex = 86;
+			this->textBox2->Text = L"to up ";
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"5", L"7", L"9" });
+			this->comboBox2->Location = System::Drawing::Point(457, 235);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(101, 24);
+			this->comboBox2->TabIndex = 88;
+			this->comboBox2->Text = L"kernel size";
+			// 
+			// textBox15
+			// 
+			this->textBox15->Location = System::Drawing::Point(351, 519);
+			this->textBox15->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox15->Name = L"textBox15";
+			this->textBox15->Size = System::Drawing::Size(137, 22);
+			this->textBox15->TabIndex = 89;
+			this->textBox15->Text = L"Number of attempts";
+			// 
+			// SkewingTD
+			// 
+			this->SkewingTD->BackColor = System::Drawing::Color::YellowGreen;
+			this->SkewingTD->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->SkewingTD->Location = System::Drawing::Point(691, 178);
+			this->SkewingTD->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->SkewingTD->Name = L"SkewingTD";
+			this->SkewingTD->Size = System::Drawing::Size(127, 50);
+			this->SkewingTD->TabIndex = 93;
+			this->SkewingTD->Text = L"SkewingTD";
+			this->SkewingTD->UseVisualStyleBackColor = false;
+			this->SkewingTD->Click += gcnew System::EventHandler(this, &MyForm::SkewingTD_Click_1);
+			// 
+			// textBox12
+			// 
+			this->textBox12->BackColor = System::Drawing::Color::Honeydew;
+			this->textBox12->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox12->ForeColor = System::Drawing::Color::DarkBlue;
+			this->textBox12->Location = System::Drawing::Point(13, 70);
+			this->textBox12->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox12->Multiline = true;
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->ReadOnly = true;
+			this->textBox12->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
+			this->textBox12->Size = System::Drawing::Size(1087, 491);
+			this->textBox12->TabIndex = 0;
+			this->textBox12->Text = resources->GetString(L"textBox12.Text");
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Honeydew;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Berlin Sans FB Demi", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::MidnightBlue;
+			this->button1->Location = System::Drawing::Point(1108, 507);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(143, 54);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Ok";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Berlin Sans FB Demi", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->ForeColor = System::Drawing::Color::MidnightBlue;
+			this->label4->Location = System::Drawing::Point(49, 10);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(260, 50);
+			this->label4->TabIndex = 2;
+			this->label4->Text = L"User Manual";
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::Transparent;
+			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->label4);
+			this->panel1->Controls->Add(this->button1);
+			this->panel1->Controls->Add(this->textBox12);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->panel1->ForeColor = System::Drawing::Color::White;
+			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(1265, 586);
+			this->panel1->TabIndex = 94;
+			// 
+			// MyForm
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScroll = true;
+			this->AutoSize = true;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->ClientSize = System::Drawing::Size(1265, 586);
+			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->SkewingTD);
+			this->Controls->Add(this->textBox15);
+			this->Controls->Add(this->comboBox2);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->flipp_y);
+			this->Controls->Add(this->flipp_x_y);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->Edge_based_method);
+			this->Controls->Add(this->sobil_y);
+			this->Controls->Add(this->cone);
+			this->Controls->Add(this->circular);
+			this->Controls->Add(this->traditional);
+			this->Controls->Add(this->textBox14);
+			this->Controls->Add(this->textBox13);
+			this->Controls->Add(this->zoom2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBox11);
+			this->Controls->Add(this->Thresholding_Segmentation);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->Restart);
+			this->Controls->Add(this->bwbitplane);
+			this->Controls->Add(this->incrsbright);
+			this->Controls->Add(this->decrsbright);
+			this->Controls->Add(this->sobil_x);
+			this->Controls->Add(this->orderfilter);
+			this->Controls->Add(this->smoothing);
+			this->Controls->Add(this->label14);
+			this->Controls->Add(this->label13);
+			this->Controls->Add(this->back);
+			this->Controls->Add(this->blinding);
+			this->Controls->Add(this->textBox10);
+			this->Controls->Add(this->textBox9);
+			this->Controls->Add(this->textBox8);
+			this->Controls->Add(this->textBox7);
+			this->Controls->Add(this->textBox6);
+			this->Controls->Add(this->textBox5);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->label10);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->save);
+			this->Controls->Add(this->Graylevelscing);
+			this->Controls->Add(this->negative);
+			this->Controls->Add(this->rotation);
+			this->Controls->Add(this->translation);
+			this->Controls->Add(this->skewingLR);
+			this->Controls->Add(this->zoom);
+			this->Controls->Add(this->Thresholding);
+			this->Controls->Add(this->reset);
+			this->Controls->Add(this->logb);
+			this->Controls->Add(this->hist);
+			this->Controls->Add(this->flipp_x);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->read);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Name = L"MyForm";
+			this->Text = L"Mahmoud Tool Box";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+
+// programming of each component
+
+#pragma 
+		
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
+			}
+	private: System::Void read_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			pictureBox1->ImageLocation = ofd->FileName; //set the picture box image to the file chosen 
+		}
+					marshal_context converter;
+					 source_image = converter.marshal_as<const char*>(ofd->FileName);
+					source = imread(source_image, 0);
+
+		//another way to read source image 
+					//source = imread(source image.jpg, 0);
+					//namedWindow("original image", 0);
+					//imshow("original image", source);
+			int summation = 0, colm = source.cols, rows = source.rows;
+			for (int t = 0; t < source.rows; t++) // to get all rows pixels values 
+			{
+				for (int u = 0; u < source.cols; u++)  // to get all columns pixels values
+				{
+					summation = summation + source.at<uchar>(t, u); // to calculate the summation of pixels values 
+				}
+			}
+			int avarage = summation / source.total(); //calculate average value of pixels
+			// appear this values when user select the image
+			label7->Text = System::Convert::ToString(avarage);
+			label11->Text = System::Convert::ToString(colm);
+			label12->Text = System::Convert::ToString(rows);
+		}
+    private: System::Void reset_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		marshal_context converter;
+		source_image = converter.marshal_as<const char*>(ofd->FileName);
+		source = imread(source_image, 0);
+		}
+	private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Restart(); // restart the application
+	}
+	private: System::Void save_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		marshal_context converter;
+		const char* outname = converter.marshal_as<const char*>(textBox11->Text);
+		imwrite(outname, source);
+		MessageBox::Show("Image Saved ","done",MessageBoxButtons::OK,MessageBoxIcon::Information);
+	}
+	private: System::Void flipp_x_Click(System::Object^ sender, System::EventArgs^ e) {
+					flip(source, source, 0);
+					//flip(source image, destination image, flipcode)
+					namedWindow("enhanced image", 0);
+					imshow("enhanced image", source);
+					/*namedWindow("fliped", 0);
+					imshow("fliped", source);	*/
+				}
+	private: System::Void flipp_y_Click(System::Object^ sender, System::EventArgs^ e) {
+		flip(source, source, 1);
+		//flip(source image, destination image, flipcode)
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+	}
+    private: System::Void flipp_x_y_Click(System::Object^ sender, System::EventArgs^ e) {
+		flip(source, source, -1);
+		//flip(source image, destination image, flipcode)
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+}
+    private: System::Void logb_Click(System::Object^ sender, System::EventArgs^ e) {
+		//convert source image to floating points
+		source.convertTo(source, CV_32F);
+		// add one pixel to each pixel 		
+		source = source + 1;
+		// apply log transormation function 
+		log(source, source);
+		// determine the constant c 		
+		normalize(source, source, 0, 255, NORM_MINMAX);
+		// return image to original type 		
+		convertScaleAbs(source, source);
+				namedWindow("enhanced image", 0);
+				imshow("enhanced image", source);
+				/*namedWindow("log", 0);
+				imshow("log", source);*/
+			}
+	private: System::Void hist_Click(System::Object^ sender, System::EventArgs^ e) {
+		equalizeHist(source, source);
+		//equalizeHist(source image,destination image);
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("histograme", 0);
+		imshow("histograme", source);*/
+	}
+	private: System::Void rotation_Click(System::Object^ sender, System::EventArgs^ e) {
+		int angel = System::Convert::ToInt16(textBox3->Text); // allow user to input the angle 
+		double sf = System::Convert::ToDouble(textBox4->Text); // allow user to input the scale factor 
+		resize(source, source, cv::Size(source.cols, source.cols));
+		//  transformation matrix for rotation
+		Mat R = getRotationMatrix2D(Point2f(source.rows / 2, source.cols / 2), angel, sf);
+		// getRotationMatrix2D(rotation point, angel, scale factor);
+		warpAffine(source, source, R, source.size());
+		//warpAffine(source image , destination image , transformation matrix, destination size());
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*ostringstream rotateangel;
+		rotateangel << "rotate by angel " << angel;
+		string windowName = rotateangel.str();
+		namedWindow(windowName, 0);
+		imshow(windowName, source);*/
+	}
+	private: System::Void translation_Click(System::Object^ sender, System::EventArgs^ e) {
+		//allow user to input the moving value in x-axis
+		float transx = System::Convert::ToInt16(textBox7->Text);
+		//allow user to input the moving value in y-axis
+		float transy = System::Convert::ToInt16(textBox8->Text);
+		//  transformation matrix for translation
+		Mat TM = (Mat_<float>(2, 3) << 1, 0, transx, 0, 1, transy);
+		warpAffine(source, source, TM, source.size());
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*ostringstream oss;
+		oss << "x = " << transx << "/ y = "<< transy;
+		string windowName = oss.str();
+		namedWindow(windowName, 0);
+		imshow(windowName, source);*/
+	}
+	private: System::Void skewingLR_Click(System::Object^ sender, System::EventArgs^ e) {
+		//allow user to input the effect value in top of the image 
+		int skwtop = System::Convert::ToInt16(textBox5->Text);
+		//allow user to input the effect value in lower of the image 
+	     int skwbottom = System::Convert::ToInt16(textBox6->Text);
+		// define 4 point as a source points
+		Point2f src_p[4];
+		src_p[0] = Point2f(0, 0);
+		src_p[1] = Point2f(source.cols - 1, 0);
+		src_p[2] = Point2f(0, source.rows - 1);
+		src_p[3] = Point2f(source.cols-1, source.rows-1);
+
+		// define 4 corresponding point as a destination points
+		Point2f dst_p[4];
+		dst_p[0] = Point2f(0, 0); //keep this point as same as the source point(no change )
+		dst_p[1] = Point2f((source.cols-1) + skwtop, 0);//change this point to apply skewing in the top
+		dst_p[2] = Point2f(skwbottom, source.rows - 1); // change this point to apply skewing in the bottom
+		dst_p[3] = Point2f(source.cols-1, source.rows-1);////keep this point as same as the source point(no change)
+		//  transformation matrix for skewing
+		Mat SM = getAffineTransform(src_p, dst_p);
+		warpAffine(source, source, SM, source.size());
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("skewing", 0);
+		imshow("skewing", source);*/
+	}
+    private: System::Void SkewingTD_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	int bottom = System::Convert::ToInt16(textBox1->Text);
+	int up = System::Convert::ToInt16(textBox2->Text);
+	// define 4 point as a source points
+	Point2f source_p[4];
+	source_p[0] = Point2f(0, 0);
+	source_p[1] = Point2f(source.cols - 1, 0);
+	source_p[2] = Point2f(0, source.rows - 1);
+	source_p[3] = Point2f(source.cols - 1, source.rows - 1);
+	// define 4 corresponding point as a destination points
+	Point2f destin_p[4];
+	destin_p[0] = Point2f(0, 0 - up); ////change this point to apply skewing up
+	destin_p[1] = Point2f(source.cols - 1, -up);//change this point to apply skewing up
+	destin_p[2] = Point2f(0, source.rows + bottom); // //change this point to apply skewing down
+	destin_p[3] = Point2f(source.cols - 1, source.rows + bottom);//change this point to apply skewing down
+	//  transformation matrix for skewing
+	Mat skwe = getAffineTransform(source_p, destin_p);
+	warpAffine(source, source, skwe, source.size());
+	namedWindow("enhanced image", 0);
+	imshow("enhanced image", source);
+}
+    private: System::Void negative_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < source.rows; i++)
+			for (int j = 0; j < source.cols; j++)
+         // get every pixels values and then subtract them from 255 to get image negative
+				source.at<uchar>(i, j) = 255 - source.at<uchar>(i, j);
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+
+		/*namedWindow("negative", 0);
+		imshow("negative", source);*/
+	}
+	private: System::Void zoom_Click(System::Object^ sender, System::EventArgs^ e) {
+	    int xs = System::Convert::ToInt16(textBox9->Text);
+		int ys = System::Convert::ToInt16(textBox10->Text);
+		// crop the part of image that i want to zoom it  
+		 Mat imcrop = source(Rect(xs, ys, source.cols /2 ,source.rows /2));
+		//Rect(start point, width,height)
+		// make zoom by 2 scale factor 
+		resize(imcrop, source, imcrop.size(), 2, 2, 1);
+	    /*resize(source,destination,destination size,fx,fy,interpolation) 
+		fx-scale factor along horizontal axis,        fy-scale factor along vertical axis, and 
+		interpolation(the way of estimating pixel values at unknown points)=
+		0 -> nearest neighbor interpolation     1 -> bilinear interpolation */
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+	}
+	private: System::Void zoom2_Click(System::Object^ sender, System::EventArgs^ e) {
+		//another way for zooming but not accurate
+		int xs = System::Convert::ToInt16(textBox9->Text);
+			   int ys = System::Convert::ToInt16(textBox10->Text);
+			   Mat R = getRotationMatrix2D(Point2f(xs, ys), 0, 1.1);
+			   // getRotationMatrix2D(rotation point, angel, scale factor);
+			   warpAffine(source, source, R, source.size());
+			   //warpAffine(source image , destination image , transformation matrix, destination size());
+			   namedWindow("enhanced image", 0);
+			   imshow("enhanced image", source);
+		   }
+    private: System::Void Graylevelscing_Click(System::Object^ sender, System::EventArgs^ e) {
+		int rangestart = System::Convert::ToInt16(textBox13->Text); // allow user to input the range start value 
+		int rangeend = System::Convert::ToInt16(textBox14->Text); // allow user to input the range end value 
+		for (int i = 0; i < source.rows; i++)
+			for (int j = 0; j < source.cols; j++)
+			{
+				if (source.at<uchar>(i, j) > rangestart && source.at<uchar>(i, j) < rangeend)
+					source.at<uchar>(i, j) = 255;
+				else
+					source.at<uchar>(i, j) = source.at<uchar>(i, j);
+			}
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("Gray level slicing", 0);
+		imshow("Gray level slicing", source);*/
+	}
+	private: System::Void decrsbright_Click(System::Object^ sender, System::EventArgs^ e) {
+		//convert source image to floating points
+		source.convertTo(source, CV_32F);
+		for (int r = 0; r < source.rows; r++)
+			for (int c = 0; c < source.cols; c++)
+			{
+				// apply power low transormation function 
+				source.at<float>(r, c) = powf(source.at<float>(r, c), 1.1);
+			}
+		// determine the constant c 
+		normalize(source, source, 0, 255, NORM_MINMAX);
+		// return image to original type 
+		convertScaleAbs(source, source);
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("brightness decreased", 0);
+		imshow("brightness decreased", source);*/
+	}
+	private: System::Void incrsbright_Click(System::Object^ sender, System::EventArgs^ e) {
+		//convert source image to floating points
+		source.convertTo(source, CV_32F);
+		for (int r = 0; r < source.rows; r++)
+			for (int c = 0; c < source.cols; c++)
+			{
+				// apply power low transormation function 
+				source.at<float>(r, c) = powf(source.at<float>(r, c), 0.9);
+			}
+		// determine the constant c 
+		normalize(source, source, 0, 255, NORM_MINMAX);
+		// return image to original type 
+		convertScaleAbs(source, source);
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("brightness increased", 0);
+		imshow("brightness increased", source);*/
+	}
+	private: System::Void blinding_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat image_blind(source.rows, source.cols, CV_8UC1);
+	//image_blind(source size , data type);
+		resize(background, background, source.size());
+		//resize(source image , destination image , destination.size(),);
+		for (int r = 0; r < source.rows; r++)
+		{
+			for (int c = 0; c < source.cols; c++)
+			{
+		// get every pixels values in source image and multiply it in factor(0.9) 
+		// get every pixels values in background image and multiply it in factor(0.1) 
+		// put the result in image_blanding matrix
+			image_blind.at<uchar>(r, c) = source.at<uchar>(r, c) * 0.9 + background.at<uchar>(r, c) * 0.1;
+			}
+		}
+		source = image_blind;
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		namedWindow("background image", 0);
+		imshow("background image", background);
+		/*namedWindow("blinding", 0);
+		imshow("blinding", source);*/
+	}
+	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
+		IO::Stream^ myStream; // to hold the image file
+		OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+		openFileDialog1->RestoreDirectory = true;
+
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			if ((myStream = openFileDialog1->OpenFile()) != nullptr)
+			{
+				//  to read background image 
+				toolgui::String^ selectedFile = openFileDialog1->FileName;
+				
+				marshal_context converter;
+				const char* backimg = converter.marshal_as<const char*>(openFileDialog1->FileName);
+				background = imread(backimg, 0);
+                myStream->Close();
+			}
+		}
+
+	}
+	private: System::Void bwbitplane_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat bit_dist= source;
+		toolgui::String^ bitplane = comboBox1->Text;
+		//Here's (Bitwise operations) we AND by either 1,2,4,8,16,32,64,or128 to get the corresponding bit planes
+		if (bitplane == "Plane 0")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(1))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 0", 0);
+			imshow("plane 0", bit_dist);
+		}
+		else if (bitplane == "Plane 1")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(2))
+						//Here's (Bitwise operations) we AND by either 1,2,4,8,16,32,64,or128 to get the corresponding bit planes
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 1", 0);
+			imshow("plane 1", bit_dist);
+		}
+		else if (bitplane == "Plane 2")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(4))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 2", 0);
+			imshow("plane 2", bit_dist);
+		}
+		else if (bitplane == "Plane 3")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(8))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 3", 0);
+			imshow("plane 3", bit_dist);
+		}
+		else if (bitplane == "Plane 4")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(16))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 4", 0);
+			imshow("plane 4", bit_dist);
+		}
+		else if (bitplane == "Plane 5")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(32))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 5", 0);
+			imshow("plane 5", bit_dist);
+		}
+		else if (bitplane == "Plane 6")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(64))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 6", 0);
+			imshow("plane 6", bit_dist);
+		}
+		else if (bitplane == "Plane 7")
+		{
+			for (int y = 0; y < source.rows; y++)
+			{
+				for (int x = 0; x < source.cols; x++)
+				{
+					if (source.at<uchar>(y, x) & uchar(128))
+						bit_dist.at<uchar>(y, x) = 255;
+					else
+						bit_dist.at<uchar>(y, x) = 0;
+				}
+			}
+			namedWindow("plane 7", 0);
+			imshow("plane 7", bit_dist);
+		}
+		source = bit_dist;
+	}
+	private: System::Void Thresholding_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		int  summation = 0;
+		for (int t = 0; t < source.rows; t++) // to get all rows pixels values 
+		{
+			for (int u = 0; u < source.cols; u++)  // to get all columns pixels values
+			{
+				summation = summation + source.at<uchar>(t, u); // to calculate the summation of pixels values 
+			}
+		}
+		int avarage = summation / source.total(); //calculate average value of pixels
+         // using avarage value as a threshold value to get perfect black and white image 	
+ 		threshold(source, source, avarage, 255, THRESH_BINARY);
+		/*threshold(source, destination, threshold value, MaxVal, THRESH_BINARY)    
+		MaxVal : The value used to set the chosen pixels
+		THRESH_BINARY : if the intensity of the pixel src(x, y) is higher than threshold, then the new pixel
+		Intensity is set to a MaxVal Otherwise the pixel are set to 0*/
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+		/*namedWindow("black and white", 0);
+		imshow("black and white", source);*/
+	}
+    private: System::Void smoothing_Click(System::Object^ sender, System::EventArgs^ e) {
+		//pyramidal filter
+		Mat kernel_p = (Mat_<float>(5, 5) << 1, 2, 3, 2, 1, 2, 4, 6, 4, 2, 3, 6, 9, 6, 3, 2, 4, 6, 4, 2, 1, 2, 3, 2, 1);
+		kernel_p = kernel_p / 81;
+		filter2D(source, source , CV_8UC1, kernel_p);
+		/*filter2D(source, destination, ddepth, kernel);
+		ddepth: representing the depth of the output image.
+        kernel:representing the convolution kernel*/
+		namedWindow("enhanced image", 0);
+		imshow("enhanced image", source);
+	}
+	private: System::Void traditional_Click(System::Object^ sender, System::EventArgs^ e) {
+			//averaging filter
+			Mat kernel_T = (Mat_<float>(3, 3) << 1, 1, 1, 1, 1, 1, 1, 1, 1);
+			kernel_T = kernel_T / 9;
+			filter2D(source, source, CV_8UC1, kernel_T);
+			namedWindow("enhanced image", 0);
+			imshow("enhanced image", source);
+		}
+    private: System::Void circular_Click(System::Object^ sender, System::EventArgs^ e) {
+	//circular filter
+	Mat kernel_c = (Mat_<float>(5, 5) << 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0);
+	kernel_c = kernel_c / 21;
+	filter2D(source, source, CV_8UC1, kernel_c);
+	namedWindow("enhanced image", 0);
+	imshow("enhanced image", source);
+}
+    private: System::Void cone_Click(System::Object^ sender, System::EventArgs^ e) {
+	//cone filter
+	Mat kernel_co = (Mat_<float>(5, 5) << 0, 0, 1, 0, 0, 0, 2, 2, 2, 0, 1, 2, 5, 2, 1, 0, 2, 2, 2, 0, 0, 0, 1, 0, 0);
+	kernel_co = kernel_co / 25;
+	filter2D(source, source, CV_8UC1, kernel_co);
+	namedWindow("enhanced image", 0);
+	imshow("enhanced image", source);
+}
+	private: System::Void orderfilter_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		int kernel_size = System::Convert::ToInt16(comboBox2->Text);
+		//Here's (Bitwise operations) we AND by either 1,2,4,8,16,32,64,or128 to get the corresponding bit planes
+			//Median filter
+			medianBlur(source, source, kernel_size);
+			//medianBlur (source, destination, kernel size);  
+			namedWindow("enhanced image", 0);
+			imshow("enhanced image", source);
+
+	}
+	private: System::Void sobil_x_Click(System::Object^ sender, System::EventArgs^ e) {
+		Sobel(source, source, CV_8UC1, 1, 0, 3);
+		/*sobel (source, destinition, ddepth, dx, dy, Ksize);
+		ddepth:representing the depth of the output image.
+		dx: order of the derivative x.        dy: order of the derivative y.
+		Ksize: size of the Sobel kernel; it must be 1, 3, 5, or 7.*/
+		namedWindow("Sharpening x", 0);
+		imshow("Sharpening x", source);
+		/*namedWindow("sobil_x", 0);
+		imshow("sobil_x", source);*/
+	}
+    private: System::Void sobil_y_Click(System::Object^ sender, System::EventArgs^ e) {
+	Sobel(source, source, CV_8UC1, 0, 1, 3);
+	namedWindow("Sharpening y", 0);
+	imshow("Sharpening y", source);
+}
+    private: System::Void Thresholding_Segmentation_Click(System::Object^ sender, System::EventArgs^ e) {
+		int threshold_value = 50;
+		int trialno = System::Convert::ToInt16(textBox15->Text); // allow user to enter Number of attempts he wants to try 
+		Mat threshold_dist;
+	for (int i = -1; i < trialno; i++) {
+		ostringstream threshold_window;
+		threshold_window << "threshold value = " << threshold_value;
+		string windowName = threshold_window.str();
+			threshold(source, threshold_dist, threshold_value, 255, THRESH_BINARY);
+			namedWindow(windowName, 0);
+			// allow user to to change threshold value
+			createTrackbar("threshold", windowName, &threshold_value, 255);
+			imshow(windowName, threshold_dist);
+			waitKey(0);
+		}
+	source = threshold_dist;
+}
+	private: System::Void Edge_based_method_Click(System::Object^ sender, System::EventArgs^ e) {
+		GaussianBlur(source, source, cv::Size(3, 3), 0);
+		//GaussianBlur(source, destination, ksize, sigma=0);     Ksize : must be odd
+		Laplacian(source, source, CV_8UC1);
+		//Laplacian(src, dst, ddepth);
+		namedWindow("GaussianBlur", 0);
+		imshow("GaussianBlur", source);
+	}
+	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		panel1->Show();   // show user manual panel 
+	}
+    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	panel1->Hide(); // hide user manual panel 
+}
+};
+}
